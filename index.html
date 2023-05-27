@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
   <script>
+
+
     const options = {
       method: 'GET',
       headers: {
@@ -27,6 +29,7 @@
           let rate = i['vote_average']
           let desc = i['overview']
           let img = i['poster_path']
+          let id = i['id']
           let url = `https://image.tmdb.org/t/p/w500/${img}`
 
           let temp_html = ` <img class="poster" src="${url}" alt="movie">
@@ -42,25 +45,32 @@
           $card.innerHTML = temp_html
           $cardList.appendChild($card)
 
+          // click 이벤트 적용
+          $card.addEventListener('click', () => {
+            alert(`영화 id : ${id}`);
+          })
+
         })
       })
       .catch(err => console.error(err));
 
-  </script>
 
+  </script>
 </head>
 
 <body>
+  <!-- header -->
   <header>
     <h1 style="color: #fff;">Movie Collection</h1>
   </header>
+  <!-- 검색기능 -->
   <form class="search-form">
     <input type="text">
     <button class="btn">검색</button>
   </form>
+  <!-- 카드 섹션 -->
   <section>
     <div class="card-list" id="card-list">
-
     </div>
   </section>
 
