@@ -8,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
   <script>
     const options = {
       method: 'GET',
@@ -28,20 +29,16 @@
           let img = i['poster_path']
           let url = `https://image.tmdb.org/t/p/w500/${img}`
 
-          let temp_html = `<div class="card">
-                            <img class="poster" src="${url}" alt="movie">
-                            <h3>${title}</h3>
+          let temp_html = ` <img class="poster" src="${url}" alt="movie">
+                            <h3 style=" text-align: center; text-decoration: underline;">${title}</h3>
                             <p>${desc}
                             </p>
-                            <footer>Ration : ${rate}</footer>
-                          </div>`
-          // let $card = document.createElement("div")
-          // $card.innerHTML = temp_html
-          // let $cardList = document.getElementById('card-list')
-          // $cardList.appendChild($card)
+                            <footer class="rate"><p>Ration : ${rate}</p></footer>
+                          `
 
           let $cardList = document.getElementById('card-list')
           let $card = document.createElement("div")
+          $card.classList.add("card")
           $card.innerHTML = temp_html
           $cardList.appendChild($card)
 
@@ -55,7 +52,7 @@
 
 <body>
   <header>
-    <h1>Movie Collection</h1>
+    <h1 style="color: #fff;">Movie Collection</h1>
   </header>
   <form class="search-form">
     <input type="text">
