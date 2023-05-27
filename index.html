@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="UTF-8">
@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="styles.css">
   <script>
     const options = {
       method: 'GET',
@@ -19,74 +20,37 @@
     fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
       .then(response => response.json())
       .then(response => {
-        console.log(response)
+        response["results"].forEach((i) => {
+
+          let title = i['title']
+          let rate = i['vote_average']
+          let desc = i['overview']
+          let img = i['poster_path']
+          let url = `https://image.tmdb.org/t/p/w500/${img}`
+
+          let temp_html = `<div class="card">
+                            <img class="poster" src="${url}" alt="movie">
+                            <h3>${title}</h3>
+                            <p>${desc}
+                            </p>
+                            <footer>Ration : ${rate}</footer>
+                          </div>`
+          // let $card = document.createElement("div")
+          // $card.innerHTML = temp_html
+          // let $cardList = document.getElementById('card-list')
+          // $cardList.appendChild($card)
+
+          let $cardList = document.getElementById('card-list')
+          let $card = document.createElement("div")
+          $card.innerHTML = temp_html
+          $cardList.appendChild($card)
+
+        })
       })
       .catch(err => console.error(err));
 
   </script>
-  <style>
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: Noto Sans;
-      font-size: 4.5rem;
-      font-weight: 400;
-      line-height: 60px;
-      letter-spacing: 0em;
-      color: #000;
-      margin: 10px;
-    }
 
-    h3 {
-      font-size: 1.5rem;
-    }
-
-    header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      background-color: aqua;
-      height: auto;
-    }
-
-    .search-form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: bisque;
-    }
-
-    .btn {
-      border: solid 2px #000;
-      margin: 10px;
-    }
-
-    .card-list {
-      display: grid;
-      gap: 50px;
-      justify-content: center;
-      grid-template-columns: repeat(3, minmax(auto, 200px));
-
-    }
-
-    .card {
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
-      margin: 20px;
-      padding: 20px;
-      width: 300px;
-      justify-self: center;
-      background-color: bisque;
-      border-radius: 10px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .poster {
-      border-radius: 10px;
-    }
-  </style>
 </head>
 
 <body>
@@ -98,37 +62,8 @@
     <button class="btn">검색</button>
   </form>
   <section>
-    <div class="card-list">
-      <div class="card">
-        <img class="poster" src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="movie">
-        <h3>God Father</h3>
-        <p>
-          Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When
-          organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son,
-          Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.
-        </p>
-        <footer>Ration : 7.5</footer>
-      </div>
-      <div class="card">
-        <img class="poster" src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="movie">
-        <h3>God Father</h3>
-        <p>
-          Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When
-          organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son,
-          Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.
-        </p>
-        <footer>Ration : 7.5</footer>
-      </div>
-      <div class="card">
-        <img class="poster" src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="movie">
-        <h3>God Father</h3>
-        <p>
-          Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When
-          organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son,
-          Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.
-        </p>
-        <footer>Ration : 7.5</footer>
-      </div>
+    <div class="card-list" id="card-list">
+
     </div>
   </section>
 
