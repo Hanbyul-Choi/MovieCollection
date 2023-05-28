@@ -35,6 +35,10 @@ header {
   background-color: bisque;
 }
 
+.input-box {
+  padding: 2px;
+  margin: 10px;
+}
 .btn {
   border: solid 2px #000;
   margin: 10px;
