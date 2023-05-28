@@ -5,8 +5,9 @@ const options = {
     Authorization: "process.env.API_KEY",
   },
 };
+
 // listing movie data
-const listing = () => {
+window.onload = () => {
   fetch(
     "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
     options
@@ -41,14 +42,8 @@ const listing = () => {
         });
       });
     })
-    .then(() => {
-      // 검색 함수 적용
-      const $form = document.querySelector(".search-form");
-      $form.addEventListener("submit", onclickSearch);
-    })
     .catch((err) => console.error(err));
 };
-listing();
 
 // 검색기능 함수
 const onclickSearch = (e) => {
@@ -59,7 +54,6 @@ const onclickSearch = (e) => {
 
   // 버튼이 눌렸을때 기본적으로 hide class 지우고 진행.
   $card.forEach((i) => i.classList.remove("hide"));
-
   // input data가 있을때만 hide class 추가
   if ($value) {
     const sortList = [...$card].filter((i) => {
