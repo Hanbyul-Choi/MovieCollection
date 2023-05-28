@@ -2,8 +2,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MjY5MDEwOTNkNDQzM2EyNGFiZTRkMjdiMmM0YTRkMyIsInN1YiI6IjY0NzE5OTI1OTQwOGVjMDExZjJiNDZkOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EUGvXNsr4R7VmKWXg8f_-xDsn9NyQOmaoBv-NryWFsc",
+    Authorization: "process.env.API_KEY",
   },
 };
 // listing movie data
