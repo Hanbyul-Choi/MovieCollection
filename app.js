@@ -53,6 +53,15 @@ listing();
 const onclickSearch = (e) => {
   e.preventDefault();
   const $value = document.getElementById("text").value;
+
+  // cardList 하위 요소 삭제 구문
+  const $cardList = document.getElementById("card-list");
+  const $card = document.querySelectorAll(".card");
+  $card.forEach((card) => {
+    $cardList.removeChild(card);
+  });
+
+  // 빈 검색창 입력 시
   if (!$value) listing();
   else {
     fetch(
@@ -63,13 +72,6 @@ const onclickSearch = (e) => {
       .then((response) => {
         let sortList = response["results"].filter((i) => {
           return i["title"].toLowerCase().includes($value);
-        });
-        console.log(sortList);
-
-        const $cardList = document.getElementById("card-list");
-        const $card = document.querySelectorAll(".card");
-        $card.forEach((card) => {
-          $cardList.removeChild(card);
         });
 
         sortList.forEach((i) => {

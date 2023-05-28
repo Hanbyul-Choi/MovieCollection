@@ -32,7 +32,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: bisque;
+  background-color: #dfdada;
 }
 
 .input-box {
@@ -42,14 +42,21 @@ header {
 .btn {
   border: solid 2px #000;
   margin: 10px;
+  padding: 2px 5px;
+  color: #000;
+}
+
+.btn:hover {
+  background-color: aliceblue;
+  transition: 0.3s;
 }
 
 .card-list {
-  padding: 50px;
+  padding: 20px;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(3, minmax(300px, 500px));
-  gap: 60px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .card {
@@ -57,10 +64,11 @@ header {
   margin: 20px;
   padding: 20px;
   justify-self: center;
-  background-color: bisque;
+  background-color: #fff;
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
+  max-width: 450px;
 }
 
 .poster {
