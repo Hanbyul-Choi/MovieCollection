@@ -50,21 +50,36 @@ window.onload = () => {
 const onclickSearch = (e) => {
   // input data 받아오기
   e.preventDefault();
-  const $value = document.getElementById("input-text").value;
+  const $inputText = document.getElementById("input-text");
+  const $value = $inputText.value;
   const $card = document.querySelectorAll(".card");
 
   // 버튼이 눌렸을때 기본적으로 hide class 지우고 진행.
-  $card.forEach((i) => i.classList.remove("hide"));
-  // input data가 있을때만 hide class 추가
-  if ($value) {
+
+  // 두글자 이상 입력 조건
+  if ($value.length === 1) {
+    alert("두글자 이상 입력하세요.");
+    $inputText.focus();
+  } else if ($value) {
+    // card title 기준 필터링
     const sortList = [...$card].filter((i) => {
-      return !i
+      return !i // title이 포함되지 않는 node만 필터링
         .querySelector(".movie-title")
         .textContent.toLowerCase()
         .includes($value);
     });
-    sortList.forEach((i) => {
-      i.classList.add("hide");
-    });
+    // 검색어와 일치하는 영화가 없을 때
+    if (sortList.length === 20) {
+      alert("검색어와 일치하는 영화가 없습니다.");
+      $inputText.focus();
+    } else {
+      $card.forEach((i) => i.classList.remove("hide"));
+      sortList.forEach((i) => {
+        // 필터링된 node만 숨기기
+        i.classList.add("hide");
+      });
+    }
+  } else {
+    $card.forEach((i) => i.classList.remove("hide"));
   }
 };
