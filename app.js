@@ -8,6 +8,7 @@ const options = {
 
 // listing movie data
 window.onload = () => {
+  document.getElementById("input-text").focus();
   fetch(
     "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
     options
@@ -22,7 +23,7 @@ window.onload = () => {
         let id = i["id"];
         let url = `https://image.tmdb.org/t/p/w500/${img}`;
 
-        let temp_html = ` <img class="poster" src="${url}" alt="movie">
+        let temp_html = `<img class="poster" src="${url}" alt="movie">
                         <h3 class="movie-title">${title}</h3>
                         <p>${desc}
                         </p>
@@ -34,7 +35,7 @@ window.onload = () => {
         const $card = document.createElement("div");
         $card.classList.add("card");
         $card.innerHTML = temp_html;
-        $cardList.appendChild($card);
+        $cardList.append($card);
 
         // card가 생성 될 때부터 click 이벤트 적용
         $card.addEventListener("click", () => {
@@ -49,7 +50,7 @@ window.onload = () => {
 const onclickSearch = (e) => {
   // input data 받아오기
   e.preventDefault();
-  const $value = document.getElementById("text").value;
+  const $value = document.getElementById("input-text").value;
   const $card = document.querySelectorAll(".card");
 
   // 버튼이 눌렸을때 기본적으로 hide class 지우고 진행.

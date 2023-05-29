@@ -59,7 +59,19 @@ header {
   gap: 10px;
 }
 
-@media (min-width: 900px) {
+.card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+  margin: 20px;
+  padding: 20px;
+  justify-self: center;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  width: 420px;
+}
+
+@media (min-width: 1000px) {
   .card-list {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -73,18 +85,6 @@ header {
   .card-list {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-
-.card {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
-  margin: 20px;
-  padding: 20px;
-  justify-self: center;
-  background-color: #fff;
-  border-radius: 10px;
-  cursor: pointer;
-  user-select: none;
-  max-width: 450px;
 }
 
 .poster {
