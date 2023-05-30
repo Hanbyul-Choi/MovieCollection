@@ -77,6 +77,7 @@ const onclickSearch = (e) => {
       });
     }
   } else {
+    // 아무것도 입력 받지 않았을 때
     $card.forEach((i) => i.classList.remove("hide"));
   }
   // 검색 클릭 후 input focusing
