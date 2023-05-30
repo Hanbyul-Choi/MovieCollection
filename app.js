@@ -25,10 +25,11 @@ window.onload = () => {
         let url = `https://image.tmdb.org/t/p/w500/${img}`;
 
         let temp_html = `<img class="poster" src="${url}" alt="movie">
-                        <h3 class="movie-title">${title}</h3>
-                        <p>${desc}
-                        </p>
-                        <footer class="rate"><p>Ration : ${rate}</p></footer>
+                        <div class="movie-info">
+                          <h3 class="movie-title">${title}</h3>
+                          <span class="rate">${rate}</span>
+                        </div>
+                        <div class="overview">${desc}</div>
                       `;
 
         // cardList 하위로 card 요소들 붙여넣기
