@@ -62,7 +62,7 @@ const onclickSearch = (e) => {
   } else if ($value) {
     // card title 기준 필터링
     const sortList = [...$card].filter((i) => {
-      return !i // title이 포함되지 않는 node만 필터링
+      return i // title이 포함되는 node만 필터링
         .querySelector(".movie-title")
         .textContent.toLowerCase()
         .includes($value);
@@ -71,10 +71,10 @@ const onclickSearch = (e) => {
     if (sortList.length === 20) {
       alert("검색어와 일치하는 영화가 없습니다.");
     } else {
-      $card.forEach((i) => i.classList.remove("hide"));
+      $card.forEach((i) => i.classList.add("hide"));
       sortList.forEach((i) => {
-        // 필터링된 node만 숨기기
-        i.classList.add("hide");
+        // 필터링된 node만 보이기
+        i.classList.remove("hide");
       });
     }
   } else {
