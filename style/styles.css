@@ -1,3 +1,4 @@
+/* default */
 * {
   font-family: "Gowun Dodum", sans-serif;
 }
@@ -28,6 +29,7 @@ header {
   height: auto;
 }
 
+/* 검색창 */
 .search-form {
   display: flex;
   justify-content: center;
@@ -51,6 +53,12 @@ header {
   transition: 0.3s;
 }
 
+/* 검색 필터링 */
+.hide {
+  display: none;
+}
+
+/* movie card */
 .card-list {
   padding: 20px;
   display: grid;
@@ -68,22 +76,6 @@ header {
   width: 440px;
   position: relative;
   overflow: hidden;
-}
-
-@media (min-width: 1000px) {
-  .card-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1400px) {
-  .card-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (min-width: 1860px) {
-  .card-list {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 .poster {
@@ -108,6 +100,24 @@ header {
   border-radius: 3px;
 }
 
+/* 그리드 반응형 구현 */
+@media (min-width: 1000px) {
+  .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1400px) {
+  .card-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1860px) {
+  .card-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 카드 내용 설명 부분 애니매이션 구현 */
 .overview {
   position: absolute;
   display: flex;
@@ -127,8 +137,4 @@ header {
 
 .card:hover .overview {
   transform: translateY(0);
-}
-
-.hide {
-  display: none;
 }
