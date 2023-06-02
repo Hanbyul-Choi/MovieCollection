@@ -2,7 +2,8 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: "process.env.API_KEY",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MjY5MDEwOTNkNDQzM2EyNGFiZTRkMjdiMmM0YTRkMyIsInN1YiI6IjY0NzE5OTI1OTQwOGVjMDExZjJiNDZkOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EUGvXNsr4R7VmKWXg8f_-xDsn9NyQOmaoBv-NryWFsc",
   },
 };
 
@@ -71,7 +72,7 @@ const onclickSearch = (e) => {
         .includes($value);
     });
     // 검색어와 일치하는 영화가 없을 때 알림
-    if (sortList.length === 20) {
+    if (!sortList) {
       alert("검색어와 일치하는 영화가 없습니다.");
     } else {
       // 필터링된 node만 보이기
