@@ -72,7 +72,7 @@ const onclickSearch = (e) => {
         .includes($value);
     });
     // 검색어와 일치하는 영화가 없을 때 알림
-    if (!sortList.length) {
+    if (sortList.length === 0) {
       alert("검색어와 일치하는 영화가 없습니다.");
     } else {
       // 필터링된 node만 보이기
